@@ -130,3 +130,9 @@ This project can be applied to any web application requiring secure authenticati
 * **Healthcare**: Protecting sensitive patient data with secure login mechanisms.
 * **Enterprise Systems**: Ensuring secure employee access to corporate resources.
 * **Consumer Applications**: Providing a seamless and secure login experience for online services and platforms.
+
+## Check it out:
+
+* 📹 YouTube Demo:[ ](https://youtu.be/LyIgccgM1K4)[https://youtu.be/LyIgccgM1K4](https://youtu.be/LyIgccgM1K4)
+* 💻 Source Code : [https://github.com/mayankyadav1711/Biometric-WebAuthentication](https://github.com/mayankyadav1711/Biometric-WebAuthentication)
+* Connect with me : [https://www.linkedin.com/in/mayankyadav17/](https://www.linkedin.com/in/mayankyadav17/)
