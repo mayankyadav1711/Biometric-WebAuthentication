@@ -1,3 +1,22 @@
+---
+cover: .gitbook/assets/view-3d-computer-device-with-peripheral-devices.jpg
+coverY: 0
+layout:
+  cover:
+    visible: true
+    size: hero
+  title:
+    visible: true
+  description:
+    visible: true
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # Biometric-WebAuthn
 
 ### Overview
