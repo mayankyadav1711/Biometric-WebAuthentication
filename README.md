@@ -1,5 +1,5 @@
 <figure><img src=".gitbook/assets/view-3d-computer-device-with-peripheral-devices.jpg" alt=""><figcaption></figcaption></figure>
-## Biometric-WebAuthn
+<h1>Biometric-WebAuthn</h1>
 
 ### Overview
 
