@@ -1,43 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="https://i.ibb.co/xFv03j7/cyber-security-shield-flat-style-78370-3593.jpg"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              clifford: "#da373d",
+            },
+          },
+        },
+      };
+    </script>
     <title>Signup</title>
-</head>
-<body>
-    <form id="register-form">
-        <input type="text" placeholder="username" id="username" />
-        <input type="password" placeholder="password" id="password" />
-        <button type="submit">Register</button>
+  </head>
+  <body class="bg-gray-100 flex items-center justify-center min-h-screen">
+    <form
+      id="register-form"
+      class="bg-white p-8 rounded-xl shadow-2xl w-full max-w-md"
+    >
+      <h2 class="text-3xl font-bold mb-8 text-center text-gray-800">
+        Create an Account
+      </h2>
+      <div class="mb-6">
+        <label
+          for="username"
+          class="block mb-2 text-sm font-medium text-gray-700"
+          >Username</label
+        >
+        <input
+          type="text"
+          placeholder="Enter your username"
+          id="username"
+          class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+        />
+      </div>
+      <div class="mb-6">
+        <label
+          for="password"
+          class="block mb-2 text-sm font-medium text-gray-700"
+          >Password</label
+        >
+        <input
+          type="password"
+          placeholder="Enter your password"
+          id="password"
+          class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+        />
+      </div>
+      <button
+        type="submit"
+        class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 transition-colors duration-300"
+      >
+        Register
+      </button>
     </form>
 
     <script>
-        const form = document.getElementById('register-form');
+      const form = document.getElementById("register-form");
 
-        const usernameField = document.getElementById('username')
-        const passwordField = document.getElementById('password')
+      const usernameField = document.getElementById("username");
+      const passwordField = document.getElementById("password");
 
-        form.addEventListener('submit', async e => {
-            e.preventDefault()
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
 
-            const response = await fetch('/register', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ 
-                    username: usernameField.value, 
-                    password: passwordField.value
-                })
-            })
+        const response = await fetch("/register", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            username: usernameField.value,
+            password: passwordField.value,
+          }),
+        });
 
-            const result = await response.json();
-            const { id } = result
+        const result = await response.json();
+        const { id } = result;
 
-            window.location.replace(`http://localhost:3000/profile.html?userId=${id}`)
-            
-        })
+        window.location.replace(
+          `http://localhost:3000/profile.html?userId=${id}`
+        );
+      });
     </script>
-</body>
+  </body>
 </html>

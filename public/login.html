@@ -1,48 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="https://i.ibb.co/xFv03j7/cyber-security-shield-flat-style-78370-3593.jpg"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              clifford: "#da373d",
+            },
+          },
+        },
+      };
+    </script>
     <title>Login</title>
-</head>
-<body>
-    <form id="login-form">
-        <input type="text" placeholder="userId" id="userId" />
-        <button type="submit">Login with Passkey</button>
+  </head>
+  <body class="bg-gray-100 flex items-center justify-center min-h-screen">
+    <form
+      id="login-form"
+      class="bg-white p-8 rounded-xl shadow-2xl w-full max-w-md"
+    >
+      <h2 class="text-3xl font-bold mb-8 text-center text-gray-800">Login</h2>
+      <div class="mb-6">
+        <label for="userId" class="block mb-2 text-sm font-medium text-gray-700"
+          >User ID</label
+        >
+        <input
+          type="text"
+          placeholder="Enter your user ID"
+          id="userId"
+          class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+        />
+      </div>
+      <button
+        type="submit"
+        class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 transition-colors duration-300"
+      >
+        Login with Passkey
+      </button>
     </form>
 
     <script src="https://unpkg.com/@simplewebauthn/browser/dist/bundle/index.umd.min.js"></script>
     <script>
-         const form = document.getElementById('login-form');
-         const userIdField = document.getElementById('userId')
+      const form = document.getElementById("login-form");
+      const userIdField = document.getElementById("userId");
 
-         form.addEventListener('submit', async e => {
-            e.preventDefault()
-            const userId = userIdField.value;
-            
-            const response = await fetch('/login-challenge', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ userId })
-            })
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const userId = userIdField.value;
 
-            const challengeResult = await response.json()
-            const { options } = challengeResult // Server side challenge
+        const response = await fetch("/login-challenge", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ userId }),
+        });
 
-            const authenticationResult = await SimpleWebAuthnBrowser.startAuthentication(options)
-            console.log(authenticationResult)
+        const challengeResult = await response.json();
+        const { options } = challengeResult; // Server side challenge
 
-            await fetch('/login-verify', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ userId, cred: authenticationResult })
-            })
-         })
+        const authenticationResult =
+          await SimpleWebAuthnBrowser.startAuthentication(options);
+        console.log(authenticationResult);
 
+        const verifyResponse = await fetch("/login-verify", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ userId, cred: authenticationResult }),
+        });
+
+        if (verifyResponse.ok) {
+          // Redirect to index.html on successful login
+          window.location.href = "index.html";
+        } else {
+          // Handle login error
+          console.error("Login failed");
+        }
+      });
     </script>
-</body>
+  </body>
 </html>

@@ -1,45 +1,157 @@
-<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="https://i.ibb.co/xFv03j7/cyber-security-shield-flat-style-78370-3593.jpg"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              clifford: "#da373d",
+            },
+          },
+        },
+      };
+    </script>
     <title>Profile</title>
-</head>
-<body>
-    <h1>Profile Page</h1>
-    <button id="register-passkey-btn">Register Passkey</button>
-
+  </head>
+  <body
+    class="bg-gray-100 flex flex-col items-center justify-center min-h-screen"
+  >
+    <div class="bg-white p-8 rounded-xl shadow-2xl max-w-md">
+      <h1 class="text-3xl font-bold mb-8 text-center text-gray-800">Profile</h1>
+      <div class="flex items-center mb-6">
+        <img
+          class="w-16 h-16 rounded-full mr-4"
+          src="https://i.ibb.co/GFqwhYC/3d-rendering-teenager-boy-with-backpack-city-1142-55311.jpg"
+          alt="Avatar"
+        />
+        <div>
+          <h2 class="text-xl font-semibold text-gray-800">Mayank Yadav</h2>
+          <p class="text-gray-600">Software Engineer</p>
+        </div>
+      </div>
+      <p class="text-gray-700 mb-4">
+        Register your passkey using one of the following methods:
+      </p>
+      <ul class="mb-6 space-y-2">
+        <li
+          class="flex items-center bg-gray-200 rounded-lg p-4 hover:bg-blue-100 transition-colors duration-300 cursor-pointer"
+        >
+          <svg
+            class="w-6 h-6 text-gray-600 hover:text-blue-600 transition-colors duration-300"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M6.625 2.655A9 9 0 0119 11a1 1 0 11-2 0 7 7 0 00-9.625-6.492 1 1 0 11-.75-1.853zM4.662 4.959A1 1 0 014.75 6.37 6.97 6.97 0 003 11a1 1 0 11-2 0 8.97 8.97 0 012.25-5.953 1 1 0 011.412-.088z"
+              clip-rule="evenodd"
+            />
+            <path
+              fill-rule="evenodd"
+              d="M5 11a5 5 0 1110 0 1 1 0 11-2 0 3 3 0 10-6 0c0 1.677-.345 3.276-.968 4.729a1 1 0 11-1.838-.789A9.964 9.964 0 005 11zm8.921 2.828a1 1 0 11-1.414 1.414A7.025 7.025 0 0014 11a1 1 0 011-1 9.025 9.025 0 00-1.079 3.828z"
+              clip-rule="evenodd"
+            />
+          </svg>
+          <span
+            class="text-gray-800 font-semibold hover:text-blue-800 transition-colors duration-300 ml-2"
+            >Fingerprint</span
+          >
+        </li>
+        <li
+          class="flex items-center bg-gray-200 rounded-lg p-4 hover:bg-blue-100 transition-colors duration-300 cursor-pointer"
+        >
+          <svg
+            class="w-6 h-6 text-gray-600 hover:text-blue-600 transition-colors duration-300"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M18 8a6 6 0 01-7.743 5.743L10 14l-1 1-1 1H6v2H2v-4l4.257-4.257A6 6 0 1118 8zm-6-4a1 1 0 100 2 2 2 0 012 2 1 1 0 102 0 4 4 0 00-4-4z"
+              clip-rule="evenodd"
+            />
+          </svg>
+          <span
+            class="text-gray-800 font-semibold hover:text-blue-800 transition-colors duration-300 ml-2"
+            >Password</span
+          >
+        </li>
+        <li
+          class="flex items-center bg-gray-200 rounded-lg p-4 hover:bg-blue-100 transition-colors duration-300 cursor-pointer"
+        >
+          <svg
+            class="w-6 h-6 text-gray-600 hover:text-blue-600 transition-colors duration-300"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V4a2 2 0 00-2-2H6zm4 14a1 1 0 100-2 1 1 0 000 2z"
+              clip-rule="evenodd"
+            />
+          </svg>
+          <span
+            class="text-gray-800 font-semibold hover:text-blue-800 transition-colors duration-300 ml-2"
+            >Another Device</span
+          >
+        </li>
+      </ul>
+      <button
+        id="register-passkey-btn"
+        class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 transition-colors duration-300"
+      >
+        Register
+      </button>
+    </div>
     <script src="https://unpkg.com/@simplewebauthn/browser/dist/bundle/index.umd.min.js"></script>
     <script>
-        const registerPasskeyBtn = document.getElementById('register-passkey-btn');
-
-        registerPasskeyBtn.addEventListener('click', async (e) => {
-            const url = new URL(window.location)
-            const userId = url.searchParams.get('userId')
-
-            const response = await fetch('/register-challenge', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ userId })
-            })
-
-            const challengeResult = await response.json()
-            const { options } = challengeResult // Server side challenge
-
-            const authenticationResult = await SimpleWebAuthnBrowser.startRegistration({...options, })
-            console.log(authenticationResult)
-
-            await fetch('/register-verify', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ userId, cred: authenticationResult })
-            })
-
-        })
+      const registerPasskeyBtn = document.getElementById(
+        "register-passkey-btn"
+      );
+      registerPasskeyBtn.addEventListener("click", async (e) => {
+        const url = new URL(window.location);
+        const userId = url.searchParams.get("userId");
+        const response = await fetch("/register-challenge", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ userId }),
+        });
+        const challengeResult = await response.json();
+        const { options } = challengeResult;
+        // Server side challenge
+        const authenticationResult =
+          await SimpleWebAuthnBrowser.startRegistration({
+            ...options,
+          });
+        console.log(authenticationResult);
+        const verifyResponse = await fetch("/register-verify", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ userId, cred: authenticationResult }),
+        });
+        if (verifyResponse.ok) {
+          // Redirect to login.html on successful registration
+          window.location.href = "login.html";
+        } else {
+          // Handle registration error
+          console.error("Registration failed");
+        }
+      });
     </script>
-</body>
+  </body>
 </html>
